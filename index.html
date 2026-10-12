@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Штиль – кофейня в Калининграде</title>
+  <meta name="description" content="Кофейня «Штиль» в Калининграде: кофе собственной обжарки, домашние десерты и тихий зал в Амалиенау.">
+
+  <!-- Шрифты с Google Fonts. Без интернета сайт тоже откроется, просто шрифты будут системные -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Yeseva+One&display=swap" rel="stylesheet">
+
+  <!-- Подключаем файл с оформлением -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ШАПКА: название, меню-якоря и кнопка брони -->
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="logo" href="#top">
+        Штиль
+        <!-- Маленький значок кофейного зерна -->
+        <svg class="logo__bean" viewBox="0 0 24 24" aria-hidden="true">
+          <ellipse cx="12" cy="12" rx="7" ry="10" transform="rotate(35 12 12)"/>
+          <path d="M17 5 C 11 9, 14 14, 7 19"/>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Разделы сайта">
+        <a href="#menu">Меню</a>
+        <a href="#about">О нас</a>
+        <a href="#visit">Адрес и часы</a>
+      </nav>
+      <a class="button button--outline" href="#booking">Забронировать столик</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <section class="hero">
+      <!-- Фото зёрен на всю ширину экрана. Сам файл лежит в папке images -->
+      <img class="hero__bg" src="images/zerna.jpg" alt="">
+
+      <div class="wrap hero__inner">
+        <!-- Большой значок зерна и название, как на вывеске -->
+        <svg class="hero__mark" viewBox="0 0 60 100" aria-hidden="true">
+          <mask id="bean-cut">
+            <rect width="60" height="100" fill="#fff"/>
+            <path d="M36 4 C 16 30, 46 62, 26 96" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+          </mask>
+          <ellipse cx="30" cy="50" rx="27" ry="47" mask="url(#bean-cut)"/>
+        </svg>
+        <p class="hero__brand">Штиль</p>
+        <p class="hero__sub">кофейня в Калининграде</p>
+
+        <h1>Кофе, после которого не хочется спешить</h1>
+        <p class="hero__lead">
+          Маленькая кофейня в Амалиенау. Обжариваем зерно сами, печём каждое утро
+          и держим в зале тишину, как на море в безветренный день.
+        </p>
+        <a class="button" href="#booking">Забронировать столик</a>
+      </div>
+    </section>
+
+    <!-- МЕНЮ -->
+    <section class="section menu" id="menu">
+      <!-- Декоративные изогнутые линии на фоне -->
+      <svg class="swirl" viewBox="0 0 1280 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-20 300 C 200 60, 520 40, 700 220 S 1100 420, 1300 180"/>
+        <path d="M-20 322 C 200 86, 520 66, 700 244 S 1100 444, 1300 204"/>
+      </svg>
+
+      <div class="wrap">
+        <h2>Меню</h2>
+        <p class="section__lead">Короткое, чтобы всё успевать делать хорошо. Растительное молоко – без доплаты.</p>
+
+        <div class="menu__columns">
+          <div class="card">
+            <h3>Напитки</h3>
+            <ul class="price-list">
+              <li>
+                <div class="price-list__row"><span>Эспрессо</span><i></i><b>160 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Американо</span><i></i><b>190 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Капучино</span><i></i><b>240 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Флэт уайт</span><i></i><b>260 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Фильтр-кофе дня</span><i></i><b>220 ₽</b></div>
+                <p>Сорт меняем каждую неделю, спросите у бариста</p>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Раф с облепихой</span><i></i><b>320 ₽</b></div>
+                <p>Облепиху берём у фермеров из Зеленоградского района</p>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Какао на овсяном молоке</span><i></i><b>280 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Чай с чабрецом</span><i></i><b>210 ₽</b></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Десерты</h3>
+            <ul class="price-list">
+              <li>
+                <div class="price-list__row"><span>Марципановый рулет</span><i></i><b>290 ₽</b></div>
+                <p>По мотивам старого кёнигсбергского рецепта</p>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Яблочный штрудель</span><i></i><b>300 ₽</b></div>
+                <p>Подаём тёплым, с ванильным соусом</p>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Сырники с облепиховым соусом</span><i></i><b>310 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Морковный торт</span><i></i><b>280 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Миндальный круассан</span><i></i><b>250 ₽</b></div>
+              </li>
+              <li>
+                <div class="price-list__row"><span>Булочка с корицей</span><i></i><b>190 ₽</b></div>
+                <p>Достаём из печи в 8:30 и в 14:00</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О НАС -->
+    <section class="section about" id="about">
+      <div class="wrap">
+        <h2>О кофейне «Штиль»</h2>
+
+        <!-- Карточка: фото слева, текст справа -->
+        <div class="about__card">
+          <img class="about__photo" src="images/kapuchino-na-stole.jpg"
+               alt="Чашка капучино на деревянном столе, рядом стаканы с водой и кусочек пирога">
+          <div class="about__body">
+            <p class="about__lead">
+              Место, где можно просто посидеть. Без громкой музыки, без очереди за спиной
+              и без ощущения, что столик пора освобождать.
+            </p>
+            <div class="about__text">
+              <p>
+                «Штиль» открыли в 2021 году двое друзей, которым не хватало в городе такого места.
+                В зале двадцать четыре места, большие окна на каштаны и полка с книгами
+                о Балтике, которые можно брать домой.
+              </p>
+              <p>
+                Зерно покупаем напрямую у небольших хозяйств и обжариваем здесь же,
+                в задней комнате, по вторникам.
+              </p>
+              <p>
+                С собаками, ноутбуками и детьми к нам можно. С плохим настроением тоже –
+                обычно оно проходит ко второй чашке.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ: пять фото в две колонки -->
+    <section class="section gallery" id="gallery">
+      <svg class="swirl" viewBox="0 0 1280 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-20 120 C 250 60, 420 240, 660 210 S 1080 60, 1300 260"/>
+        <path d="M-20 142 C 250 84, 420 264, 660 234 S 1080 84, 1300 284"/>
+      </svg>
+
+      <div class="wrap">
+        <h2>Загляните к нам</h2>
+        <p class="section__lead">
+          Выпейте кофе за столиком у окна, возьмите стакан с собой или приходите утром
+          за выпечкой, пока она тёплая.
+        </p>
+
+        <div class="gallery__grid">
+          <div class="gallery__col">
+            <img class="gallery__tall" src="images/latte-art.jpg" alt="Бариста вливает молоко в чашку и рисует узор на пенке">
+            <img src="images/bulochka-s-koritsey.jpg" alt="Булочка с корицей на белой тарелке">
+            <img src="images/mindalny-kruassan.jpg" alt="Миндальный круассан в сахарной пудре и стакан кофе">
+          </div>
+          <div class="gallery__col">
+            <img class="gallery__square" src="images/kruassan-i-latte.jpg" alt="Круассан и чашка латте с рисунком на деревянном столе">
+            <img class="gallery__tall" src="images/latte-v-ruke.jpg" alt="Рука держит чашку латте с рисунком на пенке">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- АДРЕС, ЧАСЫ И БРОНЬ -->
+    <section class="section visit" id="visit">
+      <div class="wrap">
+        <h2>Адрес и часы</h2>
+
+        <div class="visit__inner">
+          <div class="visit__info">
+            <address>
+              Калининград, улица Кутузова, 12<br>
+              Пять минут пешком от остановки «Центральный парк»
+            </address>
+
+            <dl class="hours">
+              <div><dt>Понедельник – пятница</dt><dd>8:00 – 21:00</dd></div>
+              <div><dt>Суббота и воскресенье</dt><dd>9:00 – 22:00</dd></div>
+            </dl>
+
+            <p class="visit__contacts">
+              <a href="tel:+74012000000">+7 (4012) 00-00-00</a><br>
+              <a href="mailto:hello@shtil-coffee.example">hello@shtil-coffee.example</a>
+            </p>
+          </div>
+
+          <div class="card booking" id="booking">
+            <h3>Забронировать столик</h3>
+            <p>Оставьте заявку, и мы перезвоним в течение часа, чтобы подтвердить бронь.</p>
+
+            <form class="form" id="booking-form">
+              <label class="field field--wide">
+                <span>Имя</span>
+                <input type="text" name="name" autocomplete="name" required>
+              </label>
+              <label class="field field--wide">
+                <span>Телефон</span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="+7" required>
+              </label>
+              <label class="field">
+                <span>Дата</span>
+                <input type="date" name="date" required>
+              </label>
+              <label class="field">
+                <span>Время</span>
+                <input type="time" name="time" min="08:00" max="21:00" required>
+              </label>
+              <label class="field field--wide">
+                <span>Сколько гостей</span>
+                <select name="guests">
+                  <option>1</option>
+                  <option selected>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5 и больше</option>
+                </select>
+              </label>
+              <button class="button field--wide" type="submit">Забронировать столик</button>
+              <p class="form__note field--wide" id="booking-note" role="status" hidden>
+                Это учебный сайт: форма пока никуда не отправляет данные.
+                Чтобы забронировать столик, позвоните нам.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПРОЩАЛЬНЫЙ БЛОК: фраза и круглое фото чашки кофе -->
+    <section class="closing">
+      <svg class="swirl" viewBox="0 0 1280 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-20 250 C 300 380, 800 400, 1300 90"/>
+        <path d="M-20 272 C 300 404, 800 424, 1300 114"/>
+      </svg>
+      <div class="wrap closing__inner">
+        <p class="closing__text">Не забудьте про кофе, до встречи!</p>
+        <div class="closing__photo closing__photo--cup"><img src="images/chashka-sverhu.jpg" alt=""></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ПОДВАЛ -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="logo">Штиль</p>
+      <nav class="footer__nav" aria-label="Разделы сайта в подвале">
+        <a href="#menu">Меню</a>
+        <a href="#about">О нас</a>
+        <a href="#visit">Адрес и часы</a>
+        <a href="#booking">Бронь</a>
+      </nav>
+      <p class="footer__address">Калининград, улица Кутузова, 12</p>
+      <p class="footer__credit">
+        Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, свободная лицензия CC0.
+        Список авторов – в файле «Откуда фото.txt»
+      </p>
+    </div>
+  </footer>
+
+  <!-- Маленький скрипт: форма не перезагружает страницу, а показывает подсказку -->
+  <script>
+    document.getElementById('booking-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('booking-note').hidden = false;
+    });
+  </script>
+
+</body>
+</html>

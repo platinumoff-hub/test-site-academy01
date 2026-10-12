@@ -1,0 +1,783 @@
+/* =========================================================
+   Кофейня «Штиль» – оформление сайта, версия 11
+   Стиль по подборке «кофейня стиль 1–5»: кремовый фон,
+   кофейно-коричневый цвет, шрифт с засечками, скруглённые блоки.
+   ========================================================= */
+
+/* ---------- 1. Переменные: цвета и шрифты всего сайта ----------
+   Поменяйте значение здесь – и оно изменится везде. */
+:root {
+  --cream: #f1e8d8;        /* кремовый – основной фон */
+  --milk: #faf3e6;         /* молочный – светлые карточки */
+  --coffee: #6f4e43;       /* кофейный – кнопки, тёмные блоки, заголовки */
+  --coffee-dark: #523830;  /* тёмный кофейный – обычный текст */
+  --coffee-soft: #8a6d62;  /* приглушённый текст */
+  --line: #e0d2bb;         /* тонкие линии и узоры на фоне */
+
+  --font-display: "Yeseva One", Georgia, serif;   /* главный заголовок и логотип */
+  --font-text: "Lora", Georgia, "Times New Roman", serif; /* всё остальное */
+
+  --wrap: 1120px;          /* максимальная ширина содержимого */
+  --radius: 1.5rem;        /* скругление карточек */
+}
+
+/* ---------- 2. Базовые настройки ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;     /* плавная прокрутка по якорям */
+  scroll-padding-top: 1.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--coffee-dark);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+dd,
+address {
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: var(--coffee);
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--coffee);
+}
+
+a {
+  color: inherit;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Заметная рамка при переходе клавишей Tab */
+:focus-visible {
+  outline: 3px solid var(--coffee);
+  outline-offset: 3px;
+}
+
+/* Общий контейнер: держит содержимое по центру */
+.wrap {
+  position: relative;
+  width: min(100% - 2.5rem, var(--wrap));
+  margin-inline: auto;
+}
+
+/* Кнопка-«таблетка», как в подборке */
+.button {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border: 1.5px solid var(--coffee);
+  border-radius: 999px;
+  background: var(--coffee);
+  color: var(--milk);
+  font: 500 1.05rem var(--font-text);
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 18px -6px rgba(82, 56, 48, 0.55);
+  transition: background-color 0.15s;
+}
+
+.button:hover {
+  background: var(--coffee-dark);
+}
+
+/* Кнопка с контуром – для шапки */
+.button.button--outline {
+  padding: 0.55rem 1.4rem;
+  background: transparent;
+  color: var(--coffee);
+  font-size: 0.98rem;
+  box-shadow: none;
+}
+
+.button.button--outline:hover {
+  background: var(--coffee);
+  color: var(--milk);
+}
+
+/* Мягкая светлая карточка со скруглением */
+.card {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--milk);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px -24px rgba(82, 56, 48, 0.45);
+}
+
+/* Декоративные изогнутые линии на фоне раздела */
+.swirl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 4;
+  pointer-events: none;
+}
+
+/* ---------- 3. Шапка ---------- */
+.header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.06em;
+  color: var(--coffee);
+  text-decoration: none;
+}
+
+.logo__bean {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  color: var(--coffee);
+}
+
+.nav a {
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+}
+
+.nav a:hover {
+  border-bottom-color: var(--coffee);
+}
+
+/* ---------- 4. Главный экран: фото зёрен на всю ширину ---------- */
+
+/* Шапка лежит поверх фото, поэтому её текст светлый */
+.header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 2;
+}
+
+.header .logo,
+.header .nav {
+  color: var(--milk);
+}
+
+.header .nav a:hover {
+  border-bottom-color: var(--milk);
+}
+
+.header .button.button--outline {
+  border-color: var(--milk);
+  color: var(--milk);
+}
+
+.header .button.button--outline:hover {
+  background: var(--milk);
+  color: var(--coffee-dark);
+}
+
+/* На тёмном фото рамка при переходе клавишей Tab тоже светлая */
+.header :focus-visible,
+.hero :focus-visible {
+  outline-color: var(--milk);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(600px, 96vh, 920px);
+  overflow: hidden;
+  background: var(--coffee-dark);   /* цвет, пока фото загружается */
+  color: var(--milk);               /* светлый текст, чтобы не терялся на зёрнах */
+  text-align: center;
+}
+
+/* Само фото: растянуто на весь блок и слегка «утеплено» */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.55) saturate(1.5);
+}
+
+/* Тёмная кофейная плёнка поверх фото. Чем больше последнее число (от 0 до 1),
+   тем темнее фото и тем лучше читается текст */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 32, 20, 0.68);
+}
+
+.hero__inner {
+  z-index: 1;                       /* текст лежит выше фото и плёнки */
+  padding-block: 9rem 5rem;
+}
+
+.hero__mark {
+  display: block;
+  width: clamp(44px, 5vw, 62px);
+  height: auto;
+  margin-inline: auto;
+  fill: var(--milk);
+}
+
+.hero__brand {
+  margin-top: 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 13vw, 9rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.hero__sub {
+  margin-top: 0.75rem;
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 24ch;
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+}
+
+.hero__lead {
+  max-width: 34rem;
+  margin: 1.1rem auto 0;
+  font-size: 1.08rem;
+}
+
+/* Мягкая тень под буквами, чтобы текст читался на любом месте фото */
+.hero__brand,
+.hero__sub,
+.hero h1,
+.hero__lead {
+  text-shadow: 0 2px 14px rgba(30, 15, 8, 0.75);
+}
+
+/* Светлая кнопка на тёмном фото */
+.hero .button {
+  margin-top: 2.25rem;
+  border-color: var(--milk);
+  background: var(--milk);
+  color: var(--coffee-dark);
+}
+
+.hero .button:hover {
+  border-color: var(--cream);
+  background: var(--cream);
+}
+
+/* Фото внутри маленького круга в прощальном блоке */
+.closing__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Фото чашки немного увеличено, чтобы чашка занимала почти весь круг */
+.closing__photo--cup img {
+  transform: scale(1.45);
+}
+
+/* ---------- 5. Общие отступы разделов ---------- */
+.section {
+  position: relative;
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.section__lead {
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  text-align: center;
+  color: var(--coffee-soft);
+}
+
+/* ---------- 6. Меню ---------- */
+.menu__columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  gap: 2rem clamp(1.5rem, 4vw, 3rem);
+  margin-top: 3rem;
+}
+
+.price-list {
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.price-list li {
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.price-list li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Строка «название ..... цена» */
+.price-list__row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.price-list__row i {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 2px dotted var(--line);
+  transform: translateY(-0.25em);
+}
+
+.price-list__row b {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--coffee);
+}
+
+.price-list p {
+  margin-top: 0.1rem;
+  font-size: 0.93rem;
+  font-style: italic;
+  color: var(--coffee-soft);
+}
+
+/* ---------- 7. О нас: карточка с фото слева и текстом справа ---------- */
+.about__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  margin-top: 3rem;
+  background: var(--coffee);
+  color: var(--milk);
+  border-radius: var(--radius);
+  overflow: hidden;               /* чтобы фото тоже получило скруглённые углы */
+}
+
+.about__photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+}
+
+.about__body {
+  padding: clamp(1.75rem, 5vw, 4rem);
+}
+
+.about__lead {
+  font-size: clamp(1.25rem, 2.1vw, 1.6rem);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
+.about__text {
+  margin-top: 1.75rem;
+}
+
+.about__text p + p {
+  margin-top: 1rem;
+}
+
+/* На телефоне фото в карточке становится невысокой полосой сверху */
+@media (max-width: 760px) {
+  .about__photo {
+    height: 230px;
+    min-height: 0;
+  }
+}
+
+/* ---------- Галерея: две колонки фото разной высоты ---------- */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+  align-items: start;
+  gap: clamp(1rem, 4vw, 3rem);
+  max-width: 780px;
+  margin: 3rem auto 0;
+}
+
+.gallery__col {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.gallery__col img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;            /* обычное фото – горизонтальное */
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.gallery__col img.gallery__tall {
+  aspect-ratio: 3 / 4;            /* высокое фото */
+}
+
+.gallery__col img.gallery__square {
+  aspect-ratio: 1;                /* квадратное фото */
+}
+
+/* ---------- 8. Адрес, часы и бронь ---------- */
+.visit__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 3rem clamp(2rem, 6vw, 5rem);
+  margin-top: 3rem;
+}
+
+.visit__info address {
+  font-size: 1.12rem;
+}
+
+.hours {
+  margin-top: 2rem;
+  border-top: 1.5px solid var(--coffee);
+}
+
+.hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hours dd {
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--coffee);
+}
+
+.visit__contacts {
+  margin-top: 2rem;
+}
+
+.visit__contacts a {
+  color: var(--coffee);
+  text-underline-offset: 0.25em;
+}
+
+.booking > p {
+  margin-top: 0.6rem;
+  color: var(--coffee-soft);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem 1rem;
+  margin-top: 1.5rem;
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: 0.9rem;
+  background: #fff;
+  color: var(--coffee-dark);
+  font: inherit;
+}
+
+.field input:hover,
+.field select:hover {
+  border-color: var(--coffee-soft);
+}
+
+.form .button {
+  margin-top: 0.4rem;
+}
+
+.form__note {
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: var(--cream);
+  font-size: 0.95rem;
+}
+
+/* ---------- 9. Прощальный блок с чашкой ---------- */
+.closing {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 10vw, 8rem);
+}
+
+.closing__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem clamp(2rem, 6vw, 5rem);
+}
+
+.closing__text {
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+  letter-spacing: 0.05em;
+  color: var(--coffee);
+  text-align: center;
+}
+
+/* Маленькое круглое фото в прощальном блоке */
+.closing__photo {
+  flex: none;
+  width: clamp(150px, 17vw, 210px);
+  aspect-ratio: 1;
+  border: 8px solid var(--milk);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 34px 40px -14px rgba(82, 56, 48, 0.5);
+}
+
+/* ---------- 10. Подвал ---------- */
+.footer {
+  background: var(--coffee);
+  color: var(--milk);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding-block: 2.5rem;
+}
+
+.footer .logo {
+  color: var(--milk);
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 2rem;
+  letter-spacing: 0.05em;
+}
+
+.footer__nav a {
+  text-decoration: none;
+}
+
+.footer__nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.footer__address {
+  grid-column: 2;
+  grid-row: 1;
+  text-align: right;
+}
+
+.footer__credit {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-align: right;
+}
+
+/* ---------- Объёмные кнопки ----------
+   У кнопки есть «бортик» снизу, как у настоящей клавиши.
+   При наведении она чуть приподнимается, при нажатии – утапливается.
+   --edge – цвет бортика, --lift – его высота. */
+.button {
+  --edge: #3f2a23;
+  --lift: 5px;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),              /* светлый блик сверху */
+    0 var(--lift) 0 var(--edge),                           /* бортик */
+    0 calc(var(--lift) + 8px) 18px -4px rgba(40, 22, 14, 0.5); /* мягкая тень под кнопкой */
+  transition: transform 0.09s ease-out, box-shadow 0.09s ease-out, background-color 0.15s;
+}
+
+.button:hover {
+  --lift: 7px;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 60%);
+  transform: translateY(-2px);
+}
+
+/* Нажатие: кнопка опускается, бортик почти исчезает */
+.button:active {
+  --lift: 1px;
+  transform: translateY(4px);
+  transition-duration: 0.04s;
+}
+
+/* Светлая кнопка на фото – бортик песочного цвета */
+.hero .button {
+  --edge: #c4ad88;
+}
+
+/* Кнопка с контуром в шапке – бортик пониже */
+.button.button--outline {
+  --edge: rgba(250, 243, 230, 0.6);
+  --lift: 3px;
+  background-image: none;
+  box-shadow: 0 var(--lift) 0 var(--edge);
+}
+
+.button.button--outline:hover {
+  --lift: 4px;
+  transform: translateY(-1px);
+}
+
+.button.button--outline:active {
+  --lift: 0px;
+  transform: translateY(3px);
+}
+
+/* Если человек отключил анимации в системе – кнопки не двигаются плавно */
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}
+
+/* ---------- 11. Телефоны и узкие экраны ---------- */
+@media (max-width: 760px) {
+  .menu__columns,
+  .about__card,
+  .visit__inner,
+  .footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    order: 3;              /* на телефоне меню уходит под логотип и кнопку */
+    width: 100%;
+    gap: 0.3rem 1.4rem;
+  }
+
+  .footer__address {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+  }
+
+  .footer__credit {
+    text-align: left;
+  }
+}
+
+/* Если человек отключил анимации в системе – прокрутка без плавности */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- 12. Доводка для телефонов ---------- */
+
+/* Поля формы могут сжиматься и не вылезают за край экрана */
+.form {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.field input,
+.field select {
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .visit__inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Шапка компактнее: логотип и кнопка помещаются в одну строку */
+  .header__inner {
+    gap: 0.6rem 1rem;
+    padding-block: 1rem;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+  }
+
+  .button.button--outline {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  /* Больше воздуха между шапкой и значком зерна */
+  .hero__inner {
+    padding-block: 9.5rem 4.5rem;
+  }
+}
+
+/* На совсем узких экранах дата и время идут друг под другом */
+@media (max-width: 480px) {
+  .field {
+    grid-column: 1 / -1;
+  }
+}
