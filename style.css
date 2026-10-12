@@ -781,3 +781,67 @@ address {
     grid-column: 1 / -1;
   }
 }
+
+/* ---------- 13. Блик на кнопках ----------
+   По кнопке время от времени пробегает полоска света,
+   как будто на неё падает солнечный луч. При наведении блик бежит сразу. */
+.button {
+  position: relative;
+  overflow: hidden;        /* блик не выходит за края кнопки */
+  isolation: isolate;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  inset: -20% auto -20% -60%;
+  width: 45%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;    /* блик не мешает нажимать на кнопку */
+  animation: button-shine 4.5s ease-in-out infinite;
+}
+
+/* На светлой кнопке на фото блик чуть золотистый, иначе его не видно */
+.hero .button::after {
+  background: linear-gradient(
+    100deg,
+    rgba(255, 236, 190, 0) 0%,
+    rgba(255, 220, 150, 0.35) 40%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 220, 150, 0.35) 60%,
+    rgba(255, 236, 190, 0) 100%
+  );
+}
+
+/* Наводим мышку – блик пробегает быстро */
+.button:hover::after {
+  animation: button-shine-hover 0.8s ease-out;
+}
+
+/* Полоска света большую часть времени ждёт за левым краем,
+   а потом за секунду пролетает через всю кнопку */
+@keyframes button-shine {
+  0%, 70% { left: -60%; }
+  100%    { left: 130%; }
+}
+
+@keyframes button-shine-hover {
+  from { left: -60%; }
+  to   { left: 130%; }
+}
+
+/* Если человек отключил анимации в системе – блика нет */
+@media (prefers-reduced-motion: reduce) {
+  .button::after {
+    animation: none;
+    display: none;
+  }
+}
